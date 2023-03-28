@@ -11,11 +11,14 @@ public class Main {
 
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
-    private static final Color[] COLORS = {Color.RED, Color.BLUE, Color.CYAN, Color.DARK_GRAY}
+    private static final Color[] COLORS = {Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY};
+    private static final double LINE_DISTANCE = 00000000.1;
+
+    public static double initialX, initialY, finalX, finalY;
 
     public static void main(String[] args) {
-
-
+        setScale();
+        generateLineRandom();
     }
 
     public static void setScale() {
@@ -25,13 +28,14 @@ public class Main {
 
     public static void generateLineRandom() {
 
-        double initialX = randomValue();
-        double initialY = randomValue();
+        initialX = randomValue();
+        initialY = randomValue();
 
-        double finalX = randomValue();
-        double finalY = randomValue();
+        finalX = randomValue();
+        finalY = randomValue();
 
-        StdDraw.setPenColor(randomColor());
+        selectRandomColor();
+
         drawLineAndShow(
                 initialX,
                 initialY,
@@ -39,6 +43,31 @@ public class Main {
                 finalY
         );
 
+        generateParallelLines(4);
+
+    }
+
+    public static void generateParallelLines(int lines) {
+
+        //double actualInitialX = initialX;
+        double actualInitialY = initialY;
+
+        //double actualFinalX = finalX;
+        double actualFinalY = finalY;
+
+        for (int i = 0; i < lines; i++) {
+            actualInitialY = actualInitialY - LINE_DISTANCE;
+            actualFinalY = actualFinalY - LINE_DISTANCE;
+            selectRandomColor();
+
+
+            drawLineAndShow(initialX, actualInitialY, finalX, actualFinalY);
+        }
+
+    }
+
+    public static void selectRandomColor(){
+        StdDraw.setPenColor(randomColor());
     }
 
     public static Color randomColor() {
@@ -49,7 +78,7 @@ public class Main {
         return MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
     }
 
-    public static void drawLineAndShow(double initialX, double  initialY,
+    public static void drawLineAndShow(double initialX, double initialY,
                                        double finalX, double finalY) {
         StdDraw.line(initialX, initialY, finalX, finalY);
         StdDraw.show();
