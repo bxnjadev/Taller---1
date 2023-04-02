@@ -27,6 +27,8 @@ public class Main {
     private static final double LINE_DISTANCE = 0000000000000000.1;
 
     public static double initialX, initialY, finalX, finalY;
+    public static double lastPositionInitialX, lastPositionInitialY, lastPositionFinalX, lastPositionFinalY;
+
     public static double velocityVectorX = 0.032;
     public static double velocityVectorY = 0.016;
 
@@ -106,7 +108,13 @@ public class Main {
                 drawLineAndShow(initialX, actualInitialY, finalX, actualFinalY, color);
             }
 
+            lastPositionInitialY = actualInitialY;
+            lastPositionFinalY = actualFinalY;
+
         }
+
+        lastPositionInitialX = initialX;
+        lastPositionFinalX = finalX;
 
     }
 
@@ -211,16 +219,18 @@ public class Main {
 
         while (true) {
 
-            if (Math.abs(initialX + velocityVectorX * initialX) > 1.0 ||
-            Math.abs(initialX + velocityVectorX * initialX + 0.5) > 1.0) {
+            if (Math.abs(initialX + velocityVectorX) > 1.0 ||
+            Math.abs(initialX + velocityVectorX + 0.5) > 1.0) {
                 velocityVectorX = -velocityVectorX;
                 //velocityVectorY = -velocityVectorY;
             }
 
-            if (Math.abs(initialY + velocityVectorY * initialY) > 1.0 ||
-                    Math.abs(initialY + velocityVectorY * initialY + 0.5) > 1.0) {
+            if (Math.abs(initialY + velocityVectorY ) > 1.0 ||
+                    Math.abs(initialY + velocityVectorY + 0.5) > 1.0 ||
+            lastPositionInitialY < -1.0 || lastPositionFinalY < -1.0) {
                 //velocityVectorX = -velocityVectorX;
                 velocityVectorY = -velocityVectorY;
+                System.out.println("A");
             }
 
 
@@ -242,8 +252,8 @@ public class Main {
             System.out.println("Vector de velocidad (" + velocityVectorX + " , " + velocityVectorY + ")");
             System.out.println("[***********]");
 
-            initialX = initialX + velocityVectorX * initialX;
-            initialY = initialY + velocityVectorY * initialY;
+            initialX = initialX + velocityVectorX;
+            initialY = initialY + velocityVectorY;
 
             finalX = initialX + 0.5;
             finalY = initialY + 0.5;
