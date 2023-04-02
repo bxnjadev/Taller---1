@@ -234,7 +234,6 @@ public class Main {
             if (Math.abs(initialX + velocityVectorX) > 1.0 ||
                     Math.abs(initialX + velocityVectorX + 0.5) > 1.0) {
                 velocityVectorX = -velocityVectorX;
-                //velocityVectorY = -velocityVectorY;
             }
 
             //Check if the coordinate y is out the screen, if the check is true then the vector velocity is changed
@@ -242,17 +241,9 @@ public class Main {
             if (Math.abs(initialY + velocityVectorY ) > 1.0 ||
                     Math.abs(initialY + velocityVectorY + 0.5) > 1.0 ||
             lastPositionInitialY < -1.0 || lastPositionFinalY < -1.0) {
-                //velocityVectorX = -velocityVectorX;
                 velocityVectorY = -velocityVectorY;
-                System.out.println("A");
             }
 
-
-            System.out.println("[***********]");
-            System.out.println("Posision nueva A: (" + initialX + " , " + initialY + " )");
-            System.out.println("Posicion nueva B: ( " + finalX + " , " + finalY + " )");
-            System.out.println("Vector de velocidad (" + velocityVectorX + " , " + velocityVectorY + ")");
-            System.out.println("[***********]");
 
             //Sum the new position
 
