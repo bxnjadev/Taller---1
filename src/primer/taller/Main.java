@@ -27,9 +27,8 @@ public class Main {
     private static final double LINE_DISTANCE = 0000000000000000.1;
 
     public static double initialX, initialY, finalX, finalY;
-    private static final double INITIAL_VELOCITY = 0.012;
-    public static double velocityVectorX = INITIAL_VELOCITY;
-    public static double velocityVectorY = INITIAL_VELOCITY;
+    public static double velocityVectorX = 0.032;
+    public static double velocityVectorY = 0.016;
 
     public static void main(String[] args) {
         setScale();
@@ -58,8 +57,8 @@ public class Main {
         initialX = randomValue();
         initialY = randomValue();
 
-        finalX = randomValue();
-        finalY = randomValue();
+        finalX = initialX + 0.5;
+        finalY = initialY + 0.5;
 
         StdDraw.enableDoubleBuffering();
 
@@ -212,16 +211,20 @@ public class Main {
 
         while (true) {
 
-            if (Math.abs(initialX + velocityVectorX * initialX) > 1.0) {
+            if (Math.abs(initialX + velocityVectorX * initialX) > 1.0 ||
+            Math.abs(initialX + velocityVectorX * initialX + 0.5) > 1.0) {
                 velocityVectorX = -velocityVectorX;
                 //velocityVectorY = -velocityVectorY;
             }
 
-            if (Math.abs(initialY + velocityVectorY * initialY) > 1.0) {
+            if (Math.abs(initialY + velocityVectorY * initialY) > 1.0 ||
+                    Math.abs(initialY + velocityVectorY * initialY + 0.5) > 1.0) {
                 //velocityVectorX = -velocityVectorX;
                 velocityVectorY = -velocityVectorY;
             }
 
+
+/*
             if (Math.abs(finalX + velocityVectorY * finalX) > 1.0) {
                 velocityVectorX = -velocityVectorX;
                 //velocityVectorY = -velocityVectorY;
@@ -231,7 +234,7 @@ public class Main {
                 //velocityVectorX = -velocityVectorX;
                 velocityVectorY = -velocityVectorY;
             }
-
+*/
 
             System.out.println("[***********]");
             System.out.println("Posision nueva A: (" + initialX + " , " + initialY + " )");
@@ -242,9 +245,12 @@ public class Main {
             initialX = initialX + velocityVectorX * initialX;
             initialY = initialY + velocityVectorY * initialY;
 
-            finalX = finalX + velocityVectorX * finalX;
-            finalY = finalY + velocityVectorY * finalY;
+            finalX = initialX + 0.5;
+            finalY = initialY + 0.5;
 
+          /*  finalX = finalX + velocityVectorX * finalX;
+            finalY = finalY + velocityVectorY * finalY;
+*/
             StdDraw.pause(20);
 
             StdDraw.clear();

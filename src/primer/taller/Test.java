@@ -19,6 +19,11 @@ public class Test {
         double x = MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
         double y = MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
 
+        double x_2 = MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
+        double y_2 = MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
+
+        StdDraw.setPenColor(Color.RED);
+
         double vx = 0.032;
         double vy = 0.012;
 
@@ -26,11 +31,11 @@ public class Test {
 
         while (true) {
 
-            if (Math.abs(x + vx) > 1.0 || Math.abs(x + vx + 2) > 1.0) {
+            if (Math.abs(x + vx) > 1.0 || Math.abs(x + vx + 0.5) > 1.0) {
                 vx = -vx;
             }
 
-            if (Math.abs(y + vy) > 1.0 || Math.abs(x + vx + 2) > 1.0) {
+            if (Math.abs(y + vy) > 1.0 || Math.abs(y + vy + 0.5) > 1.0) {
                 vy = - vy;
             }
 
@@ -40,7 +45,7 @@ public class Test {
             StdDraw.clear();
             StdDraw.setPenColor(Color.RED);
 
-            StdDraw.line(x, y, x + 2, y + 2);
+            StdDraw.line(x, y, x + 0.5, y + 0.5);
 
             StdDraw.show();
             StdDraw.pause(20);
