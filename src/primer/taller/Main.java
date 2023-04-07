@@ -3,6 +3,7 @@ package primer.taller;
 import edu.princeton.cs.stdlib.StdDraw;
 
 import java.awt.Color;
+import java.util.Random;
 
 /**
  * This program try to simulate a screen protector
@@ -12,6 +13,7 @@ import java.awt.Color;
 
 public class Main {
 
+    private static final Random RANDOM = new Random();
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
 
@@ -28,14 +30,12 @@ public class Main {
     public static double initialX, initialY, finalX, finalY;
     public static double lastPositionInitialX, lastPositionInitialY, lastPositionFinalX, lastPositionFinalY;
 
-    public static double velocityVectorX = 0.0032;
-    public static double velocityVectorY = 0.0032;
-    public static double velocityVectorX2 = 0.0032;
-    public static double velocityVectorY2 = 0.0032;
+    public static double velocityVectorX, velocityVectorY, velocityVectorX2, velocityVectorY2;
 
     public static void main(String[] args) {
         setScale();
         StdDraw.enableDoubleBuffering();
+        assignVelocityRandom();
         generateLineRandom();
         StdDraw.show();
 
@@ -51,6 +51,17 @@ public class Main {
         StdDraw.setYscale(MIN_VALUE, MAX_VALUE);
     }
 
+    public static void assignVelocityRandom() {
+
+        double velocityRandom = randomValueInInterval(0.001, 0.008);
+
+        velocityVectorX = velocityRandom;
+        velocityVectorX2 = velocityRandom;
+        velocityVectorY = velocityRandom;
+        velocityVectorY2 = velocityRandom;
+
+    }
+
     /**
      * Generate one line random in the screen with a color random
      */
@@ -59,8 +70,8 @@ public class Main {
 
         //Generate the lines random
 
-        initialX = randomValue();
-        initialY = randomValue();
+        initialX = randomValueInInterval(MIN_VALUE, MAX_VALUE);
+        initialY = randomValueInInterval(MIN_VALUE, MAX_VALUE);
 
         finalX = initialX + 0.3;
         finalY = initialY + 0.3;
@@ -150,8 +161,8 @@ public class Main {
      * @return a random value
      */
 
-    public static double randomValue() {
-        return MIN_VALUE + (MAX_VALUE - MIN_VALUE) * Math.random();
+    public static double randomValueInInterval(double minValue, double maxValue) {
+        return  minValue + (maxValue - minValue) * Math.random();
     }
 
     /**
@@ -164,7 +175,7 @@ public class Main {
      */
 
     public static void drawLineAndPoint(double initialX, double initialY,
-                                double finalX, double finalY) {
+                                        double finalX, double finalY) {
         drawLineAndPoint(initialX, initialY, finalX, finalY, DEFAULT_COLOR);
     }
 
@@ -207,12 +218,12 @@ public class Main {
             }
 
             if (Math.abs(initialY + velocityVectorY) > 1.0 ||
-            Math.abs(lastPositionInitialY + velocityVectorY) > 1.0) {
+                    Math.abs(lastPositionInitialY + velocityVectorY) > 1.0) {
                 velocityVectorY = -velocityVectorY;
             }
 
             if (Math.abs(finalY + velocityVectorY) > 1.0 ||
-            Math.abs(lastPositionFinalY + velocityVectorY2) > 1.0) {
+                    Math.abs(lastPositionFinalY + velocityVectorY2) > 1.0) {
                 velocityVectorY2 = -velocityVectorY2;
             }
 
