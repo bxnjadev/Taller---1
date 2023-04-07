@@ -24,13 +24,16 @@ public class Main {
 
     private static int counter_colors = 0;
 
-    private static final double LINE_DISTANCE = 0000000000000000.1;
+    private static final double LINE_DISTANCE = 000000000000000000000000.1;
+    private static final double CIRCLE_RADIUS = 0.01;
 
     public static double initialX, initialY, finalX, finalY;
     public static double lastPositionInitialX, lastPositionInitialY, lastPositionFinalX, lastPositionFinalY;
 
-    public static double velocityVectorX = 0.032;
-    public static double velocityVectorY = 0.016;
+    public static double velocityVectorX = 0.0032;
+    public static double velocityVectorY = 0.0032;
+    public static double velocityVectorX2 = 0.0032;
+    public static double velocityVectorY2 = 0.0032;
 
     public static void main(String[] args) {
         setScale();
@@ -61,8 +64,8 @@ public class Main {
         initialX = randomValue();
         initialY = randomValue();
 
-        finalX = initialX + 0.5;
-        finalY = initialY + 0.5;
+        finalX = initialX + 0.3;
+        finalY = initialY + 0.3;
 
         //Enabled double buffering for avoid flicker
 
@@ -76,7 +79,7 @@ public class Main {
 
         //Draw line in the screen
 
-        drawLine(
+        drawLineAndPoint(
                 initialX,
                 initialY,
                 finalX,
@@ -115,9 +118,9 @@ public class Main {
                 color = selectRandomColorAndGet();
                 assignColor(color);
 
-                drawLine(initialX, actualInitialY, finalX, actualFinalY, color);
+                drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
             } else {
-                drawLine(initialX, actualInitialY, finalX, actualFinalY, color);
+                drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
             }
 
             //Store the last line
@@ -199,13 +202,13 @@ public class Main {
      * @param finalY   the y component final
      */
 
-    public static void drawLine(double initialX, double initialY,
-                                       double finalX, double finalY) {
-        drawLine(initialX, initialY, finalX, finalY, DEFAULT_COLOR);
+    public static void drawLineAndPoint(double initialX, double initialY,
+                                double finalX, double finalY) {
+        drawLineAndPoint(initialX, initialY, finalX, finalY, DEFAULT_COLOR);
     }
 
     /**
-     * Draw line in the screen and show it
+     * Draw line and a point in the screen and show it
      *
      * @param initialX the x component initial
      * @param initialY the y component initial
@@ -213,11 +216,14 @@ public class Main {
      * @param color    the color line
      */
 
-    public static void drawLine(double initialX, double initialY,
-                                       double finalX, double finalY,
-                                       Color color) {
+    public static void drawLineAndPoint(double initialX, double initialY,
+                                        double finalX, double finalY,
+                                        Color color) {
 
         StdDraw.setPenColor(color);
+
+        StdDraw.filledCircle(initialX, initialY, CIRCLE_RADIUS);
+        StdDraw.filledCircle(finalX, finalY, CIRCLE_RADIUS);
         StdDraw.line(initialX, initialY, finalX, finalY);
     }
 
@@ -231,36 +237,39 @@ public class Main {
 
             //Check if the coordinate x is out the screen, if the check is true then the vector velocity is changed
 
-            if (Math.abs(initialX + velocityVectorX) > 1.0 ||
-                    Math.abs(initialX + velocityVectorX + 0.5) > 1.0) {
+            if (Math.abs(initialX + velocityVectorX) > 1.0) {
                 velocityVectorX = -velocityVectorX;
+                velocityVectorY2 = -velocityVectorY2;
+            }
+
+            if (Math.abs(finalX + velocityVectorX) > 1.0) {
+                velocityVectorX2 = -velocityVectorX2;
+            }
+
+            if (Math.abs(initialY + velocityVectorY) > 1.0) {
+                velocityVectorY = -velocityVectorY;
+            }
+
+            if (Math.abs(finalY + velocityVectorY) > 1.0) {
+                velocityVectorY2 = -velocityVectorY2;
             }
 
             //Check if the coordinate y is out the screen, if the check is true then the vector velocity is changed
 
-            if (Math.abs(initialY + velocityVectorY ) > 1.0 ||
-                    Math.abs(initialY + velocityVectorY + 0.5) > 1.0 ||
-            lastPositionInitialY < -1.0 || lastPositionFinalY < -1.0) {
-                velocityVectorY = -velocityVectorY;
-            }
-
-
-            //Sum the new position
-
             initialX = initialX + velocityVectorX;
             initialY = initialY + velocityVectorY;
 
-            finalX = initialX + 0.5;
-            finalY = initialY + 0.5;
-
-            StdDraw.pause(20);
+            finalX = finalX + velocityVectorX2;
+            finalY = finalY + velocityVectorY2;
 
             StdDraw.clear();
 
-            drawLine(initialX, initialY,
+            drawLineAndPoint(initialX, initialY,
                     finalX, finalY, getColorByIndex(0));
 
             generateParallelLines(5);
+            StdDraw.pause(10);
+
             StdDraw.show();
 
         }
