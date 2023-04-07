@@ -3,7 +3,6 @@ package primer.taller;
 import edu.princeton.cs.stdlib.StdDraw;
 
 import java.awt.Color;
-import java.util.Random;
 
 /**
  * This program try to simulate a screen protector
