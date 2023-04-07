@@ -206,11 +206,13 @@ public class Main {
                 velocityVectorX2 = -velocityVectorX2;
             }
 
-            if (Math.abs(initialY + velocityVectorY) > 1.0) {
+            if (Math.abs(initialY + velocityVectorY) > 1.0 ||
+            Math.abs(lastPositionInitialY + velocityVectorY) > 1.0) {
                 velocityVectorY = -velocityVectorY;
             }
 
-            if (Math.abs(finalY + velocityVectorY) > 1.0) {
+            if (Math.abs(finalY + velocityVectorY) > 1.0 ||
+            Math.abs(lastPositionFinalY + velocityVectorY2) > 1.0) {
                 velocityVectorY2 = -velocityVectorY2;
             }
 
