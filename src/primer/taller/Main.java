@@ -19,9 +19,9 @@ public class Main {
     private static final double MAX_VALUE = 1.0;
 
     private static final Color DEFAULT_COLOR = Color.BLACK;
-    private static final Color[] COLORS =
-            {Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY, Color.YELLOW, Color.PINK};
-    private static final Color[] COLORS_ASSIGNED = new Color[6];
+    private static final Color[] COLORS_ASSIGNED = {
+            Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY, Color.YELLOW, Color.PINK
+    };
 
     private static int counter_colors = 0;
 
