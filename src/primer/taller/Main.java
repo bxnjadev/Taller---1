@@ -2,7 +2,7 @@ package primer.taller;
 
 import edu.princeton.cs.stdlib.StdDraw;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.Random;
 
 /**
