@@ -13,8 +13,6 @@ import java.util.Random;
 
 public class Main {
 
-    private static final Random RANDOM = new Random();
-
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
 
@@ -203,7 +201,6 @@ public class Main {
 
             if (Math.abs(initialX + velocityVectorX) > 1.0) {
                 velocityVectorX = -velocityVectorX;
-                velocityVectorY2 = -velocityVectorY2;
             }
 
             if (Math.abs(finalX + velocityVectorX) > 1.0) {
