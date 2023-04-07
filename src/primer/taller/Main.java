@@ -19,7 +19,8 @@ public class Main {
     private static final double MAX_VALUE = 1.0;
 
     private static final Color DEFAULT_COLOR = Color.BLACK;
-    private static final Color[] COLORS = {Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY};
+    private static final Color[] COLORS =
+            {Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY, Color.YELLOW, Color.PINK};
     private static final Color[] COLORS_ASSIGNED = new Color[6];
 
     private static int counter_colors = 0;
@@ -73,10 +74,6 @@ public class Main {
 
         //Using method selectRandomColorAndGet for get a random color and added to color array
 
-        Color color = selectRandomColorAndGet();
-
-        assignColor(color);
-
         //Draw line in the screen
 
         drawLineAndPoint(
@@ -114,14 +111,7 @@ public class Main {
 
             //Check if the color is null for set a random color for those line
 
-            if (color == null) {
-                color = selectRandomColorAndGet();
-                assignColor(color);
-
-                drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
-            } else {
-                drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
-            }
+            drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
 
             //Store the last line
 
@@ -136,22 +126,6 @@ public class Main {
     }
 
     /**
-     * Select a random color and return it
-     *
-     * @return a color random
-     */
-
-    public static Color selectRandomColorAndGet() {
-
-        //As said in the javadoc get a random and set in the pen color and return it
-
-        Color color = randomColor();
-        StdDraw.setPenColor();
-
-        return color;
-    }
-
-    /**
      * Assign a color to color assigned array
      *
      * @param color a color for saved
@@ -160,16 +134,6 @@ public class Main {
     public static void assignColor(Color color) {
         COLORS_ASSIGNED[counter_colors] = color;
         counter_colors++;
-    }
-
-    /**
-     * Get a random color
-     *
-     * @return a random color
-     */
-
-    public static Color randomColor() {
-        return COLORS[RANDOM.nextInt(COLORS.length)];
     }
 
     /**
