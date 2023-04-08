@@ -29,13 +29,11 @@ public class Main {
 
     public static double velocityVectorX, velocityVectorY, velocityVectorX2, velocityVectorY2;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchFieldException, IllegalAccessException {
         setScale();
         StdDraw.enableDoubleBuffering();
         assignVelocityRandom();
         generateLineRandom();
-
-        StdDraw.setTitle(TITLE);
         StdDraw.show();
 
         run();
