@@ -12,6 +12,7 @@ import java.awt.Color;
 
 public class Main {
 
+    private static final String TITLE = "Screen Saver";
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
 
@@ -33,6 +34,8 @@ public class Main {
         StdDraw.enableDoubleBuffering();
         assignVelocityRandom();
         generateLineRandom();
+
+        StdDraw.setTitle(TITLE);
         StdDraw.show();
 
         run();
@@ -53,7 +56,7 @@ public class Main {
 
     public static void assignVelocityRandom() {
 
-        double velocityRandom = randomValueInInterval(0.002, 0.003);
+        double velocityRandom = randomValueInInterval(0.007, 0.008);
 
         velocityVectorX = velocityRandom;
         velocityVectorX2 = velocityRandom;
