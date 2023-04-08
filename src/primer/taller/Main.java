@@ -13,7 +13,6 @@ import java.util.Random;
 
 public class Main {
 
-    private static final Random RANDOM = new Random();
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
 
@@ -234,8 +233,6 @@ public class Main {
                     finalX, finalY, getColorByIndex(0));
 
             generateParallelLines(5);
-            StdDraw.pause(10);
-
             StdDraw.show();
 
         }
