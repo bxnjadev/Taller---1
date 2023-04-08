@@ -77,8 +77,8 @@ public class Main {
         initialX = randomValueInInterval(MIN_VALUE, MAX_VALUE);
         initialY = randomValueInInterval(MIN_VALUE, MAX_VALUE);
 
-        finalX = initialX + 0.3;
-        finalY = initialY + 0.3;
+        finalX =  randomValueInInterval(MIN_VALUE, MAX_VALUE);
+        finalY = randomValueInInterval(MIN_VALUE, MAX_VALUE);
 
         //Enabled double buffering for avoid flicker
 
@@ -135,17 +135,6 @@ public class Main {
         lastPositionInitialX = initialX;
         lastPositionFinalX = finalX;
 
-    }
-
-    /**
-     * Assign a color to color assigned array
-     *
-     * @param color a color for saved
-     */
-
-    public static void assignColor(Color color) {
-        COLORS_ASSIGNED[counter_colors] = color;
-        counter_colors++;
     }
 
     /**
