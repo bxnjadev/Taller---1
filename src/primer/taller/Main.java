@@ -16,6 +16,9 @@ public class Main {
     private static final double MIN_VALUE = -1.0;
     private static final double MAX_VALUE = 1.0;
 
+    private static final double VELOCITY_MIN = 0.005;
+    private static final double VELOCITY_MAX = 0.008;
+
     private static final Color DEFAULT_COLOR = Color.BLACK;
     private static final Color[] COLORS_ASSIGNED = {
             Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY, Color.YELLOW, Color.PINK
@@ -55,7 +58,7 @@ public class Main {
 
     private static void assignVelocityRandom() {
 
-        double velocityRandom = randomValueInInterval(0.007, 0.008);
+        double velocityRandom = randomValueInInterval(VELOCITY_MIN, VELOCITY_MAX);
 
         velocityVectorX = velocityRandom;
         velocityVectorX2 = velocityRandom;
