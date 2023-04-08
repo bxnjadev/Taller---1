@@ -51,6 +51,10 @@ public class Main {
         StdDraw.setYscale(MIN_VALUE, MAX_VALUE);
     }
 
+    /**
+     * Set a random velocity for the all velocity vector
+     */
+
     public static void assignVelocityRandom() {
 
         double velocityRandom = randomValueInInterval(0.001, 0.008);
