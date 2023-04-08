@@ -44,7 +44,7 @@ public class Main {
      * Sets the x and y scale for the screen
      */
 
-    public static void setScale() {
+    private static void setScale() {
         StdDraw.setXscale(MIN_VALUE, MAX_VALUE);
         StdDraw.setYscale(MIN_VALUE, MAX_VALUE);
     }
@@ -53,7 +53,7 @@ public class Main {
      * Set a random velocity for the all velocity vector
      */
 
-    public static void assignVelocityRandom() {
+    private static void assignVelocityRandom() {
 
         double velocityRandom = randomValueInInterval(0.007, 0.008);
 
@@ -103,7 +103,7 @@ public class Main {
      * @param lines quantity lines
      */
 
-    public static void generateParallelLines(int lines) {
+    private static void generateParallelLines(int lines) {
 
         double actualInitialY = initialPositionY;
         double actualFinalY = finalPositionY;
@@ -142,7 +142,7 @@ public class Main {
      * @return the color searched of array
      */
 
-    public static Color getColorByIndex(int index) {
+    private static Color getColorByIndex(int index) {
         return COLORS_ASSIGNED[index];
     }
 
@@ -152,7 +152,7 @@ public class Main {
      * @return a random value
      */
 
-    public static double randomValueInInterval(double minValue, double maxValue) {
+    private static double randomValueInInterval(double minValue, double maxValue) {
         return  minValue + (maxValue - minValue) * Math.random();
     }
 
@@ -165,7 +165,7 @@ public class Main {
      * @param finalY   the y component final
      */
 
-    public static void drawLineAndPoint(double initialX, double initialY,
+    private static void drawLineAndPoint(double initialX, double initialY,
                                         double finalX, double finalY) {
         drawLineAndPoint(initialX, initialY, finalX, finalY, DEFAULT_COLOR);
     }
@@ -179,7 +179,7 @@ public class Main {
      * @param color    the color line
      */
 
-    public static void drawLineAndPoint(double initialX, double initialY,
+    private static void drawLineAndPoint(double initialX, double initialY,
                                         double finalX, double finalY,
                                         Color color) {
 
@@ -194,7 +194,7 @@ public class Main {
      * Run the main program
      */
 
-    public static void run() {
+    private static void run() {
 
         while (true) {
 
