@@ -24,7 +24,7 @@ public class Main {
     private static final double LINE_DISTANCE = 000000000000000000000000.1;
     private static final double CIRCLE_RADIUS = 0.01;
 
-    public static double initialX, initialY, finalX, finalY;
+    public static double initialPositionX, initialPositionY, finalPositionX, finalPositionY;
     public static double lastPositionInitialX, lastPositionInitialY, lastPositionFinalX, lastPositionFinalY;
 
     public static double velocityVectorX, velocityVectorY, velocityVectorX2, velocityVectorY2;
@@ -72,11 +72,11 @@ public class Main {
 
         //Generate the lines random
 
-        initialX = randomValueInInterval(0.3, 1);
-        initialY = randomValueInInterval(0.3, 1);
+        initialPositionX = randomValueInInterval(0.3, 1);
+        initialPositionY = randomValueInInterval(0.3, 1);
 
-        finalX =  randomValueInInterval(0.3, 1);
-        finalY = randomValueInInterval(0.3, 1);
+        finalPositionX =  randomValueInInterval(0.3, 1);
+        finalPositionY = randomValueInInterval(0.3, 1);
 
         //Enabled double buffering for avoid flicker
 
@@ -87,10 +87,10 @@ public class Main {
         //Draw line in the screen
 
         drawLineAndPoint(
-                initialX,
-                initialY,
-                finalX,
-                finalY
+                initialPositionX,
+                initialPositionY,
+                finalPositionX,
+                finalPositionY
         );
 
         generateParallelLines(5);
@@ -105,8 +105,8 @@ public class Main {
 
     public static void generateParallelLines(int lines) {
 
-        double actualInitialY = initialY;
-        double actualFinalY = finalY;
+        double actualInitialY = initialPositionY;
+        double actualFinalY = finalPositionY;
 
         //Iterate for every line and calculate the distance between a line and the next
         // subtract a distance defined for calculate the other lines
@@ -121,7 +121,7 @@ public class Main {
 
             //Check if the color is null for set a random color for those line
 
-            drawLineAndPoint(initialX, actualInitialY, finalX, actualFinalY, color);
+            drawLineAndPoint(initialPositionX, actualInitialY, finalPositionX, actualFinalY, color);
 
             //Store the last line
 
@@ -130,8 +130,8 @@ public class Main {
 
         }
 
-        lastPositionInitialX = initialX;
-        lastPositionFinalX = finalX;
+        lastPositionInitialX = initialPositionX;
+        lastPositionFinalX = finalPositionX;
 
     }
 
@@ -200,36 +200,36 @@ public class Main {
 
             //Check if the coordinate x is out the screen, if the check is true then the vector velocity is changed
 
-            if (Math.abs(initialX + velocityVectorX) > 1.0) {
+            if (Math.abs(initialPositionX + velocityVectorX) > 1.0) {
                 velocityVectorX = -velocityVectorX;
             }
 
-            if (Math.abs(finalX + velocityVectorX2) > 1.0) {
+            if (Math.abs(finalPositionX + velocityVectorX2) > 1.0) {
                 velocityVectorX2 = -velocityVectorX2;
             }
 
-            if (Math.abs(initialY + velocityVectorY) > 1.0 ||
+            if (Math.abs(initialPositionY + velocityVectorY) > 1.0 ||
                     Math.abs(lastPositionInitialY + velocityVectorY) > 1.0) {
                 velocityVectorY = -velocityVectorY;
             }
 
-            if (Math.abs(finalY + velocityVectorY2) > 1.0 ||
+            if (Math.abs(finalPositionY + velocityVectorY2) > 1.0 ||
                     Math.abs(lastPositionFinalY + velocityVectorY2) > 1.0) {
                 velocityVectorY2 = -velocityVectorY2;
             }
 
             //Check if the coordinate y is out the screen, if the check is true then the vector velocity is changed
 
-            initialX = initialX + velocityVectorX;
-            initialY = initialY + velocityVectorY;
+            initialPositionX = initialPositionX + velocityVectorX;
+            initialPositionY = initialPositionY + velocityVectorY;
 
-            finalX = finalX + velocityVectorX2;
-            finalY = finalY + velocityVectorY2;
+            finalPositionX = finalPositionX + velocityVectorX2;
+            finalPositionY = finalPositionY + velocityVectorY2;
 
             StdDraw.clear();
 
-            drawLineAndPoint(initialX, initialY,
-                    finalX, finalY, getColorByIndex(0));
+            drawLineAndPoint(initialPositionX, initialPositionY,
+                    finalPositionX, finalPositionY, getColorByIndex(0));
 
             generateParallelLines(5);
             StdDraw.show();
