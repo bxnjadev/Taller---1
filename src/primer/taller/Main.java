@@ -3,7 +3,6 @@ package primer.taller;
 import edu.princeton.cs.stdlib.StdDraw;
 
 import java.awt.Color;
-import java.util.Random;
 
 /**
  * This program try to simulate a screen protector
@@ -20,8 +19,6 @@ public class Main {
     private static final Color[] COLORS_ASSIGNED = {
             Color.RED, Color.BLUE, Color.ORANGE, Color.DARK_GRAY, Color.YELLOW, Color.PINK
     };
-
-    private static int counter_colors = 0;
 
     private static final double LINE_DISTANCE = 000000000000000000000000.1;
     private static final double CIRCLE_RADIUS = 0.01;
@@ -56,7 +53,7 @@ public class Main {
 
     public static void assignVelocityRandom() {
 
-        double velocityRandom = randomValueInInterval(0.001, 0.008);
+        double velocityRandom = randomValueInInterval(0.002, 0.003);
 
         velocityVectorX = velocityRandom;
         velocityVectorX2 = velocityRandom;
@@ -73,11 +70,11 @@ public class Main {
 
         //Generate the lines random
 
-        initialX = randomValueInInterval(MIN_VALUE, MAX_VALUE);
-        initialY = randomValueInInterval(MIN_VALUE, MAX_VALUE);
+        initialX = randomValueInInterval(0.3, 1);
+        initialY = randomValueInInterval(0.3, 1);
 
-        finalX =  randomValueInInterval(MIN_VALUE, MAX_VALUE);
-        finalY = randomValueInInterval(MIN_VALUE, MAX_VALUE);
+        finalX =  randomValueInInterval(0.3, 1);
+        finalY = randomValueInInterval(0.3, 1);
 
         //Enabled double buffering for avoid flicker
 
@@ -205,7 +202,7 @@ public class Main {
                 velocityVectorX = -velocityVectorX;
             }
 
-            if (Math.abs(finalX + velocityVectorX) > 1.0) {
+            if (Math.abs(finalX + velocityVectorX2) > 1.0) {
                 velocityVectorX2 = -velocityVectorX2;
             }
 
@@ -214,7 +211,7 @@ public class Main {
                 velocityVectorY = -velocityVectorY;
             }
 
-            if (Math.abs(finalY + velocityVectorY) > 1.0 ||
+            if (Math.abs(finalY + velocityVectorY2) > 1.0 ||
                     Math.abs(lastPositionFinalY + velocityVectorY2) > 1.0) {
                 velocityVectorY2 = -velocityVectorY2;
             }
