@@ -17,7 +17,7 @@ public class Main {
     private static final double MAX_VALUE = 1.0;
 
     private static final double VELOCITY_MIN = 0.005;
-    private static final double VELOCITY_MAX = 0.008;
+    private static final double VELOCITY_MAX = 0.006;
 
     private static final Color DEFAULT_COLOR = Color.BLACK;
     private static final Color[] COLORS_ASSIGNED = {
@@ -226,7 +226,7 @@ public class Main {
             initialPositionX = initialPositionX + velocityVectorX;
             initialPositionY = initialPositionY + velocityVectorY;
 
-            finalPositionX = finalPositionX + velocityVectorX2;
+            finalPositionX = initialPositionX + velocityVectorX2;
             finalPositionY = finalPositionY + velocityVectorY2;
 
             StdDraw.clear();
