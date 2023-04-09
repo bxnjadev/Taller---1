@@ -17,7 +17,7 @@ public class Main {
     private static final double MAX_VALUE = 1.0;
 
     private static final double VELOCITY_MIN = 0.005;
-    private static final double VELOCITY_MAX = 0.006;
+    private static final double VELOCITY_MAX = 0.008;
 
     private static final Color DEFAULT_COLOR = Color.BLACK;
     private static final Color[] COLORS_ASSIGNED = {
@@ -78,7 +78,7 @@ public class Main {
         initialPositionX = randomValueInInterval(0.3, 1);
         initialPositionY = randomValueInInterval(0.3, 1);
 
-        finalPositionX =  randomValueInInterval(0.3, 1);
+        finalPositionX = randomValueInInterval(0.3, 1);
         finalPositionY = randomValueInInterval(0.3, 1);
 
         //Enabled double buffering for avoid flicker
@@ -156,7 +156,7 @@ public class Main {
      */
 
     private static double randomValueInInterval(double minValue, double maxValue) {
-        return  minValue + (maxValue - minValue) * Math.random();
+        return minValue + (maxValue - minValue) * Math.random();
     }
 
     /**
@@ -169,7 +169,7 @@ public class Main {
      */
 
     private static void drawLineAndPoint(double initialX, double initialY,
-                                        double finalX, double finalY) {
+                                         double finalX, double finalY) {
         drawLineAndPoint(initialX, initialY, finalX, finalY, DEFAULT_COLOR);
     }
 
@@ -183,8 +183,8 @@ public class Main {
      */
 
     private static void drawLineAndPoint(double initialX, double initialY,
-                                        double finalX, double finalY,
-                                        Color color) {
+                                         double finalX, double finalY,
+                                         Color color) {
 
         StdDraw.setPenColor(color);
 
@@ -226,7 +226,7 @@ public class Main {
             initialPositionX = initialPositionX + velocityVectorX;
             initialPositionY = initialPositionY + velocityVectorY;
 
-            finalPositionX = initialPositionX + velocityVectorX2;
+            finalPositionX = finalPositionX + velocityVectorX2;
             finalPositionY = finalPositionY + velocityVectorY2;
 
             StdDraw.clear();
@@ -239,5 +239,4 @@ public class Main {
 
         }
     }
-
 }
